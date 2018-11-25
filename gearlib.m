@@ -27,6 +27,7 @@
 %==============================================================================%
 
 :- include_module gearlib.cylinder.
+:- include_module gearlib.gear.
 :- include_module gearlib.utils.
 
 :- use_module list.

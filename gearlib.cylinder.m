@@ -106,20 +106,21 @@ gen_cylinder_sides(ConstructVertex,
     Sin = math.sin(Angle),
     
     % Positions.
-    Pos1 = {Cos * Radius, Sin * Radius, Height *  0.5},
-    Pos2 = {Cos * Radius, Sin * Radius, Height * -0.5},
+    Pos = {Cos * Radius, Sin * Radius},
+    Pos1 = gearlib.utils.z(Pos, Height *  0.5),
+    Pos2 = gearlib.utils.z(Pos, Height * -0.5),
     
     % Tex coords for the lid.
     Tex = {Cos, Sin},
     
     % Normal for the sides
-    Normal = {Cos, Sin, 0.0},
+    Normal = gearlib.utils.z(Tex, 0.0),
     
     % S of tex-coords for the side.
     TexS = Angle / (math.pi + math.pi),
     
-    Lid1Vertex = ConstructVertex(Pos1, Tex, {0.0, 0.0, -1.0}),
-    Lid2Vertex = ConstructVertex(Pos2, Tex, {0.0, 0.0,  1.0}),
+    Lid1Vertex = ConstructVertex(Pos1, Tex, gearlib.utils.z_antinormal),
+    Lid2Vertex = ConstructVertex(Pos2, Tex, gearlib.utils.z_normal),
     Side1Vertex = ConstructVertex(Pos1, {TexS, 0.0}, Normal),
     Side2Vertex = ConstructVertex(Pos2, {TexS, 1.0}, Normal).
 
