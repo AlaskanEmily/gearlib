@@ -1,9 +1,22 @@
 Gearlib
 =======
 
-Gearlib is a library to generate meshes of gears. It is written in Mercury and released under the zlib license.
+Gearlib is a library to generate meshes of gears.
 
-TODO: Java and C# interfaces (more than just what Mercury outputs)
-TODO: More than just cylider generation
-TODO: Options for gear shapes (octoroidal, sawtooth, S-curve)
-TODO: Bevel gears
+Implemented in Mercury, Gearlib is most likely to be useful for applications written in Mercury, or Java, C#, or Erlang through bindings.
+
+The code is released under the zlib license.
+
+What works
+----------
+
+* Generating cylinders with variable tesselation
+* Generating gears with variable tooth count and depth
+
+TODO
+----
+
+* Java and C# interfaces (more than just what Mercury outputs)
+* Options for gear shapes (octoroidal, sawtooth, S-curve)
+* Options for gear tooth tesselation
+* Bevel gears
