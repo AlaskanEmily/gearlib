@@ -231,8 +231,8 @@ gen_gear_tooth(ConstructVertex,
     BottomStartY = Sin4 * InsideRadius,
     
     % Normals for the rising and falling edges
-    RisingNormal =  {math.cos(Angle + T), math.sin(Angle + T), 0.0},
-    FallingNormal = {math.cos(Angle - T), math.sin(Angle - T), 0.0},
+    RisingNormal =  {math.cos(Angle2 - T), math.sin(Angle2 - T), 0.0},
+    FallingNormal = {math.cos(Angle3 + T), math.sin(Angle3 + T), 0.0},
     
     % Face points
     add_points(ConstructVertex, BottomEndX, BottomEndY, Height, Angle1, !Vertices),
