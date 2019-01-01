@@ -285,7 +285,12 @@ gen_gear(ConstructVertex, NumTeeth, _NumFacesPerToothSide, RootRadius, InsideRad
         [ConstructVertex({0.0, 0.0, Height *  0.5}, {0.5, 0.5}, gearlib.utils.z_normal)|
         [ConstructVertex({0.0, 0.0, Height * -0.5}, {0.5, 0.5}, gearlib.utils.z_antinormal)|
         Vertices]]),
-    [fan([Count|list.reverse([14|Lid1])])|[fan([Count+1|list.reverse([15|Lid2])])|Faces]]) :-
+    [Lid1Mesh|[Lid2Mesh|Faces]]) :-
+    
+    % Define the "lids", which are the flat sides of the gears.
+    % One is reversed since one must be wound in reverse, as it faces the other side.
+    Lid1Mesh = fan([Count|[14|Lid1]]),
+    Lid2Mesh = fan([Count+1|list.reverse([15|Lid2])]),
     
     gearlib.utils.angle_list(NumTeeth, Increment, Angles),
     
@@ -298,11 +303,9 @@ gen_gear(ConstructVertex, NumTeeth, _NumFacesPerToothSide, RootRadius, InsideRad
         0, Count),
         
         ( if
-%            list.reverse(FacesUnwrapped) = [strip(Indices)|Tail]
             list.reverse(FacesUnwrapped) = [strip(Indices)|Tail]
         then
             Faces = [strip(list.map(gearlib.utils.wrap(Count), Indices))|Tail]
-%            Faces = [strip(list.map(gearlib.utils.wrap(Count), Indices))|[]]
         else
             throw(software_error("Less than one face"))
         ).
